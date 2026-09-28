@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f3f0ea" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23141219'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='800' fill='white'%3ENM%3C/text%3E%3C/svg%3E" />
+  <title>No Margins Media — Sticker Pack</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17151c;
+      --muted: #716d78;
+      --paper: #f3f0ea;
+      --glass: rgba(255,255,255,.66);
+      --edge: rgba(23,21,28,.1);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body {
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 50% 34%, rgba(255,255,255,.96) 0 18%, rgba(255,255,255,.42) 42%, transparent 66%),
+        linear-gradient(135deg, #f8f6f2, #ece7df);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button { font: inherit; color: inherit; }
+
+    .app { position: fixed; inset: 0; overflow: hidden; }
+
+    .brand {
+      position: absolute;
+      top: max(20px, env(safe-area-inset-top));
+      left: max(22px, env(safe-area-inset-left));
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      color: white;
+      background: #141219;
+      letter-spacing: -.08em;
+      box-shadow: 0 5px 15px rgba(20,18,25,.18);
+    }
+
+    .meta {
+      position: absolute;
+      top: max(24px, env(safe-area-inset-top));
+      right: max(24px, env(safe-area-inset-right));
+      z-index: 10;
+      text-align: right;
+    }
+
+    .meta strong { display: block; font-size: 13px; letter-spacing: -.01em; }
+    .meta span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      perspective: 1100px;
+      touch-action: none;
+    }
+
+    .shadow {
+      position: absolute;
+      width: min(53vw, 53vh, 560px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(32,24,42,.28);
+      filter: blur(34px);
+      transform: translate3d(calc(var(--mx, 0) * -12px), calc(6% + var(--my, 0) * 10px), -70px) scale(.88,.18);
+      opacity: calc(.38 + var(--lift, 0) * .25);
+      transition: opacity .2s ease;
+    }
+
+    .sticker-wrap {
+      --rx: -3deg;
+      --ry: 5deg;
+      --bend: 0deg;
+      --lift: 0;
+      --mx: 0;
+      --my: 0;
+      position: relative;
+      width: min(66vw, 66vh, 650px);
+      aspect-ratio: 1;
+      transform-style: preserve-3d;
+      transform:
+        translate3d(calc(var(--mx) * 10px), calc(var(--my) * 9px - var(--lift) * 10px), calc(var(--lift) * 32px))
+        rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(var(--bend));
+      transition: transform .5s cubic-bezier(.2,.85,.25,1), opacity .28s ease, filter .28s ease;
+      will-change: transform;
+      cursor: grab;
+    }
+
+    .sticker-wrap.dragging { cursor: grabbing; transition: opacity .28s ease, filter .28s ease; }
+    .sticker-wrap.outgoing { opacity: 0; filter: blur(8px); transform: translate3d(var(--exit-x), 15px, -90px) rotateY(var(--exit-r)) scale(.76); }
+    .sticker-wrap.incoming { animation: arrive .62s cubic-bezier(.17,.89,.3,1.22) both; }
+
+    @keyframes arrive {
+      from { opacity: 0; filter: blur(8px); transform: translate3d(var(--enter-x), -8px, -90px) rotateY(var(--enter-r)) scale(.76); }
+      to { opacity: 1; filter: blur(0); }
+    }
+
+    .sticker {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 18px 16px rgba(27,19,40,.18));
+    }
+
+    .layer {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #eeeae1;
+      transform: translateZ(var(--z));
+      box-shadow: inset 0 0 0 1px rgba(30,25,35,.05);
+    }
+
+    .back {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      transform: translateZ(-12px) rotateY(180deg);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: rgba(45,43,48,.34);
+      background:
+        repeating-linear-gradient(35deg, transparent 0 42px, rgba(40,40,45,.055) 43px 45px),
+        #ebe8df;
+      font-size: clamp(13px,2vw,22px);
+      font-weight: 900;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .back::after {
+      content: "";
+      position: absolute;
+      inset: 0 49%;
+      background: rgba(25,23,29,.1);
+      box-shadow: 0 0 4px rgba(25,23,29,.12);
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      transform: translateZ(3px);
+      background: #fff;
+      isolation: isolate;
+    }
+
+    .art {
+      position: absolute;
+      left: 0;
+      top: -12.5%;
+      width: 100%;
+      height: 125%;
+      object-fit: cover;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .face::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      inset: -18%;
+      border-radius: 50%;
+      pointer-events: none;
+      background:
+        linear-gradient(112deg,
+          transparent 16%,
+          rgba(255,255,255,.06) 28%,
+          rgba(255,255,255,.72) 41%,
+          rgba(255,255,255,.11) 52%,
+          transparent 66%);
+      mix-blend-mode: screen;
+      opacity: .76;
+      transform: translate3d(calc(var(--mx) * 25%), calc(var(--my) * 20%), 0) rotate(8deg);
+      transition: transform .12s linear;
+    }
+
+    .face::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at calc(50% + var(--mx) * 30%) calc(50% + var(--my) * 30%), rgba(255,255,255,.15), transparent 38%),
+        repeating-conic-gradient(from 8deg, rgba(255,0,178,.11) 0 8deg, rgba(0,234,255,.1) 9deg 16deg, rgba(255,240,0,.08) 17deg 24deg, transparent 25deg 31deg);
+      mix-blend-mode: color-dodge;
+      opacity: .42;
+      mask-image: radial-gradient(circle, #000 0 68%, transparent 97%);
+    }
+
+    .peel {
+      position: absolute;
+      z-index: 6;
+      top: -1px;
+      right: -1px;
+      width: var(--peel, 0px);
+      height: var(--peel, 0px);
+      border-radius: 0 100% 0 100%;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255,255,255,.96), #dad6cf 48%, #f8f7f2 52%);
+      box-shadow: -8px 9px 15px rgba(25,20,34,.2);
+      transform: translateZ(10px) rotate(calc(var(--peel, 0px) * .035deg));
+      transform-origin: top right;
+      opacity: min(1, calc(var(--peel, 0px) / 12));
+    }
+
+    .hint {
+      position: absolute;
+      left: 50%;
+      bottom: calc(max(118px, env(safe-area-inset-bottom) + 100px));
+      z-index: 4;
+      transform: translateX(-50%);
+      color: rgba(23,21,28,.55);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: opacity .5s ease;
+    }
+
+    .hint.hidden { opacity: 0; }
+
+    .dock {
+      position: absolute;
+      left: 50%;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      max-width: calc(100vw - 22px);
+      padding: 7px;
+      border: 1px solid var(--edge);
+      border-radius: 22px;
+      background: var(--glass);
+      box-shadow: 0 12px 35px -15px rgba(22,18,27,.28);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      transform: translateX(-50%);
+    }
+
+    .thumb {
+      position: relative;
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      padding: 5px;
+      overflow: hidden;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      opacity: .48;
+      cursor: pointer;
+      transform: scale(.86) rotate(var(--tilt));
+      transition: .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .thumb img { position: absolute; inset: -12.5% 0; width: 100%; height: 125%; object-fit: cover; border-radius: 50%; }
+    .thumb:hover { opacity: .82; transform: translateY(-2px) scale(.95); }
+    .thumb.active { opacity: 1; transform: translateY(-4px) scale(1.05); box-shadow: 0 7px 12px rgba(24,20,30,.2); }
+    .thumb:focus-visible, .control:focus-visible { outline: 2px solid #16131b; outline-offset: 2px; }
+
+    .divider { width: 1px; height: 32px; margin: 0 3px; background: var(--edge); }
+    .control {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+    .control:hover { background: rgba(25,22,30,.05); }
+    .control svg { width: 17px; height: 17px; }
+
+    @media (max-width: 720px) {
+      .sticker-wrap { width: min(88vw, 62vh); }
+      .shadow { width: min(76vw, 58vh); }
+      .meta { display: none; }
+      .thumb { width: 43px; height: 43px; }
+      .dock { gap: 1px; padding: 5px; }
+      .control { width: 37px; height: 37px; }
+      .hint { bottom: calc(max(94px, env(safe-area-inset-bottom) + 84px)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sticker-wrap, .face::before, .thumb { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+    /* Embedded in the No Margins Media hero (stickers/index.html?embed):
+       the host page supplies the background and branding. */
+    html.embed body { background: transparent; }
+    html.embed .brand, html.embed .meta { display: none; }
+  </style>
+  <script>if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('embed');</script>
+</head>
+<body>
+  <main class="app">
+    <div class="brand"><span class="brand-mark">NM</span><span>No Margins Media</span></div>
+    <div class="meta"><strong id="title">Purple Session</strong><span id="counter">01 / 06 · Gloss vinyl</span></div>
+
+    <section class="stage" id="stage" aria-label="Interactive No Margins Media sticker">
+      <div class="shadow" aria-hidden="true"></div>
+      <div class="sticker-wrap incoming" id="stickerWrap">
+        <div class="sticker" id="sticker">
+          <div class="back">No Margins Media</div>
+          <i class="layer" style="--z:-10px"></i>
+          <i class="layer" style="--z:-8px"></i>
+          <i class="layer" style="--z:-6px"></i>
+          <i class="layer" style="--z:-4px"></i>
+          <i class="layer" style="--z:-2px"></i>
+          <div class="face"><img class="art" id="art" src="assets/purple.jpeg" alt="No Margins Media purple session sticker" /></div>
+          <div class="peel" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="hint" id="hint">Drag to flex · pull the top-right edge to peel · swipe to change</p>
+
+    <nav class="dock" id="dock" aria-label="Sticker designs">
+      <button class="thumb active" style="--tilt:-6deg" data-index="0" aria-label="Purple Session"><img src="assets/purple.jpeg" alt="" /></button>
+      <button class="thumb" style="--tilt:5deg" data-index="1" aria-label="Paul Pink"><img src="assets/paul-v1.jpeg" alt="" /></button>
+      <button class="thumb" style="--tilt:-4deg" data-index="2" aria-label="Pink Session"><img src="assets/pink.jpeg" alt="" /></button>
+      <button class="thumb" style="--tilt:7deg" data-index="3" aria-label="Paul Blue"><img src="assets/paul-v2.jpeg" alt="" /></button>
+      <button class="thumb" style="--tilt:-7deg" data-index="4" aria-label="Aqua Session"><img src="assets/v1.jpeg" alt="" /></button>
+      <button class="thumb" style="--tilt:4deg" data-index="5" aria-label="Yellow Session"><img src="assets/ns.jpeg" alt="" /></button>
+      <span class="divider" aria-hidden="true"></span>
+      <button class="control" id="play" aria-label="Pause automatic rotation" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path id="playIcon" fill="currentColor" d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z" /></svg>
+      </button>
+    </nav>
+  </main>
+
+  <script src="peel.js" defer></script>
+  <script type="text/plain" id="legacy-tilt-prototype">
+    const designs = [
+      { src: 'assets/purple.jpeg', name: 'Purple Session', finish: 'Gloss vinyl' },
+      { src: 'assets/paul-v1.jpeg', name: 'Paul Pink', finish: 'Holographic gloss' },
+      { src: 'assets/pink.jpeg', name: 'Pink Session', finish: 'Pearlescent vinyl' },
+      { src: 'assets/paul-v2.jpeg', name: 'Paul Blue', finish: 'Ice gloss' },
+      { src: 'assets/v1.jpeg', name: 'Aqua Session', finish: 'Chrome gloss' },
+      { src: 'assets/ns.jpeg', name: 'Yellow Session', finish: 'High-gloss vinyl' }
+    ];
+
+    const stage = document.querySelector('#stage');
+    const wrap = document.querySelector('#stickerWrap');
+    const art = document.querySelector('#art');
+    const hint = document.querySelector('#hint');
+    const title = document.querySelector('#title');
+    const counter = document.querySelector('#counter');
+    const thumbs = [...document.querySelectorAll('.thumb')];
+    const play = document.querySelector('#play');
+    const playIcon = document.querySelector('#playIcon');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let active = 0;
+    let paused = false;
+    let timer;
+    let drag = null;
+    let peel = 0;
+    let raf = 0;
+
+    function variables(x = 0, y = 0, lift = 0, bend = 0) {
+      wrap.style.setProperty('--mx', x.toFixed(3));
+      wrap.style.setProperty('--my', y.toFixed(3));
+      wrap.style.setProperty('--rx', `${(-y * 14 - 2).toFixed(2)}deg`);
+      wrap.style.setProperty('--ry', `${(x * 18 + 4).toFixed(2)}deg`);
+      wrap.style.setProperty('--bend', `${bend.toFixed(2)}deg`);
+      wrap.style.setProperty('--lift', lift.toFixed(3));
+      stage.style.setProperty('--mx', x.toFixed(3));
+      stage.style.setProperty('--my', y.toFixed(3));
+      stage.style.setProperty('--lift', lift.toFixed(3));
+    }
+
+    function resetPose() {
+      peel = 0;
+      wrap.style.setProperty('--peel', '0px');
+      variables(0, 0, 0, 0);
+    }
+
+    function schedule() {
+      clearTimeout(timer);
+      if (!paused) timer = setTimeout(() => change((active + 1) % designs.length, 1), reduceMotion ? 6500 : 4200);
+    }
+
+    function change(index, direction = index > active ? 1 : -1) {
+      if (index === active || wrap.classList.contains('outgoing')) return;
+      hint.classList.add('hidden');
+      clearTimeout(timer);
+      wrap.style.setProperty('--exit-x', `${-direction * 46}vw`);
+      wrap.style.setProperty('--exit-r', `${direction * -44}deg`);
+      wrap.classList.remove('incoming');
+      wrap.classList.add('outgoing');
+
+      setTimeout(() => {
+        active = index;
+        art.src = designs[index].src;
+        art.alt = `No Margins Media ${designs[index].name} sticker`;
+        title.textContent = designs[index].name;
+        counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(designs.length).padStart(2, '0')} · ${designs[index].finish}`;
+        thumbs.forEach((button, i) => {
+          button.classList.toggle('active', i === index);
+          button.setAttribute('aria-current', i === index ? 'true' : 'false');
+        });
+        resetPose();
+        wrap.style.setProperty('--enter-x', `${direction * 42}vw`);
+        wrap.style.setProperty('--enter-r', `${direction * 36}deg`);
+        wrap.classList.remove('outgoing');
+        void wrap.offsetWidth;
+        wrap.classList.add('incoming');
+        schedule();
+      }, reduceMotion ? 20 : 275);
+    }
+
+    function point(event) {
+      const box = wrap.getBoundingClientRect();
+      return {
+        x: ((event.clientX - box.left) / box.width) * 2 - 1,
+        y: ((event.clientY - box.top) / box.height) * 2 - 1,
+        box
+      };
+    }
+
+    stage.addEventListener('pointermove', event => {
+      const p = point(event);
+      if (!drag) {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => variables(p.x * .58, p.y * .58, .12, p.x * 1.3));
+        return;
+      }
+      const dx = event.clientX - drag.x;
+      const dy = event.clientY - drag.y;
+      const distance = Math.hypot(dx, dy);
+      if (drag.peeling) {
+        peel = Math.min(p.box.width * .38, Math.max(0, Math.hypot(dx, dy) * .72));
+        wrap.style.setProperty('--peel', `${peel}px`);
+        variables(-dx / p.box.width, dy / p.box.height, Math.min(.85, distance / 210), dx / 18);
+      } else {
+        variables(Math.max(-1, Math.min(1, dx / (p.box.width * .32))), Math.max(-1, Math.min(1, dy / (p.box.height * .32))), Math.min(.7, distance / 280), dx / 26);
+      }
+    });
+
+    stage.addEventListener('pointerdown', event => {
+      if (event.button !== undefined && event.button !== 0) return;
+      const p = point(event);
+      drag = { x: event.clientX, y: event.clientY, time: performance.now(), peeling: p.x > .5 && p.y < -.5 };
+      clearTimeout(timer);
+      wrap.classList.add('dragging');
+      hint.classList.add('hidden');
+      stage.setPointerCapture?.(event.pointerId);
+    });
+
+    function release(event) {
+      if (!drag) return;
+      const dx = event.clientX - drag.x;
+      const dy = event.clientY - drag.y;
+      const elapsed = performance.now() - drag.time;
+      const wasPeeling = drag.peeling;
+      drag = null;
+      wrap.classList.remove('dragging');
+      if (wasPeeling && peel > wrap.getBoundingClientRect().width * .22) {
+        change((active + 1) % designs.length, 1);
+      } else if (Math.abs(dx) > 65 && (elapsed < 700 || Math.abs(dx) > 120)) {
+        change((active + (dx < 0 ? 1 : -1) + designs.length) % designs.length, dx < 0 ? 1 : -1);
+      } else {
+        resetPose();
+        schedule();
+      }
+    }
+
+    stage.addEventListener('pointerup', release);
+    stage.addEventListener('pointercancel', release);
+    stage.addEventListener('pointerleave', event => { if (!drag) resetPose(); });
+
+    thumbs.forEach(button => button.addEventListener('click', () => {
+      const index = Number(button.dataset.index);
+      change(index, index > active ? 1 : -1);
+    }));
+
+    play.addEventListener('click', () => {
+      paused = !paused;
+      play.setAttribute('aria-pressed', String(paused));
+      play.setAttribute('aria-label', paused ? 'Play automatic rotation' : 'Pause automatic rotation');
+      playIcon.setAttribute('d', paused ? 'M7 4.5v15L19.5 12z' : 'M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z');
+      schedule();
+    });
+
+    addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight') change((active + 1) % designs.length, 1);
+      if (event.key === 'ArrowLeft') change((active - 1 + designs.length) % designs.length, -1);
+      if (event.key === ' ') { event.preventDefault(); play.click(); }
+    });
+
+    addEventListener('blur', () => clearTimeout(timer));
+    addEventListener('focus', schedule);
+    resetPose();
+    schedule();
+  </script>
+</body>
+</html>
