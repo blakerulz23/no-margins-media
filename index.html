@@ -14,13 +14,13 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#07050b"/><text x="50" y="44" font-family="Archivo Black, Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="-1" fill="#ffffff" text-anchor="middle">NO</text><text x="50" y="62" font-family="Archivo Black, Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="-1" text-anchor="middle" fill="url(#g)">MARGINS</text><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a5bff"/><stop offset="0.5" stop-color="#2E6BFF"/><stop offset="1" stop-color="#FF2E9A"/></linearGradient></defs></svg></template>
 <style>
-  :root{--nmm-display:'Sofia Sans Extra Condensed','Archivo Black',sans-serif;--nmm-glow:0 0 22px rgba(74,20,160,.55),0 0 2px rgba(74,20,160,.5)}
+  :root{--nmm-display:'Sofia Sans Extra Condensed','Archivo Black',sans-serif;--nmm-glow:0 0 26px rgba(168,96,255,.6),0 0 3px rgba(168,96,255,.45)}
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:#9d83e0}
+  html,body{margin:0;padding:0;background:#16114b}
   body{overflow-x:hidden}
   ::selection{background:#FF2E9A;color:#fff}
   ::-webkit-scrollbar{width:9px;height:9px}
-  ::-webkit-scrollbar-track{background:#9d83e0}
+  ::-webkit-scrollbar-track{background:#16114b}
   ::-webkit-scrollbar-thumb{background:#5e36a3;border-radius:9px}
   ::-webkit-scrollbar-thumb:hover{background:#6d3fb0}
   image-slot{display:block;width:100%;height:100%}
@@ -59,17 +59,20 @@
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
-<div style="position:relative;min-height:100vh;background:linear-gradient(158deg,#b08ae0 0%,#9d83e0 38%,#8886e3 72%,#9a7fd9 100%);color:#2a1348;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;cursor:none;background-attachment:fixed;isolation:isolate">
+<div style="position:relative;min-height:100vh;background:#16114b;color:#f3eeff;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;cursor:none;isolation:isolate">
+
+  <!-- Page gradient: deep navy, magenta glow top-left, purple right, violet-to-blue along the bottom. -->
+  <div data-bg-gradient="1" style="position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(62% 46% at 0% 6%,rgba(165,24,152,.78),transparent 66%),radial-gradient(55% 46% at 100% 28%,rgba(78,22,140,.6),transparent 70%),radial-gradient(72% 46% at 8% 100%,rgba(92,36,196,.72),transparent 70%),radial-gradient(62% 46% at 100% 100%,rgba(34,30,176,.78),transparent 70%),#16114b"></div>
 
   <!-- Blurred photo behind the page. Stand-in image until Sand sends the chosen photo: swap the url() below. -->
-  <div data-bg-blur="1" style="position:fixed;inset:-80px;z-index:-1;pointer-events:none;background:url(photos/p3.jpeg) center/cover no-repeat;filter:blur(70px) saturate(1.15);opacity:.32"></div>
+  <div data-bg-blur="1" style="position:fixed;inset:-80px;z-index:-1;pointer-events:none;background:url(photos/p3.jpeg) center/cover no-repeat;filter:blur(70px) saturate(1.15);opacity:.16"></div>
 
   <div data-grain="1" style="position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:8000;opacity:.06;mix-blend-mode:overlay;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
 
   <div data-cursor-ring="1" style="position:fixed;left:0;top:0;width:38px;height:38px;border:1px solid rgba(255,255,255,.7);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:width .28s cubic-bezier(.2,.7,.2,1),height .28s cubic-bezier(.2,.7,.2,1),background .28s,opacity .3s;will-change:left,top;opacity:0"></div>
   <div data-cursor-dot="1" style="position:fixed;left:0;top:0;width:5px;height:5px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9999;mix-blend-mode:difference;will-change:left,top;opacity:0"></div>
 
-  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;z-index:7000;display:flex;align-items:center;justify-content:space-between;padding:8px clamp(20px,4vw,56px);transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s,backdrop-filter .4s,border-color .4s;background:rgba(196,172,236,.55);backdrop-filter:blur(10px);border-bottom:1px solid rgba(42,19,72,.08)">
+  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;z-index:7000;display:flex;align-items:center;justify-content:space-between;padding:8px clamp(20px,4vw,56px);transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s,backdrop-filter .4s,border-color .4s;background:rgba(74,40,140,.5);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.1)">
     <a onClick="{{ goHome }}" data-cursor="hover" style="display:flex;align-items:center;gap:11px;cursor:none;text-decoration:none">
       <img class="nmm-navlogo" src="logo-nmm.png" alt="No Margins Media" style="height:clamp(50px,5vw,68px);width:auto;display:block">
     </a>
@@ -94,38 +97,38 @@
             <iframe src="stickers/index.html?embed" title="No Margins Media interactive sticker collection" style="display:block;width:100%;border:0;background:transparent"></iframe>
           </div>
           <div class="nmm-hero-text" style="display:flex;flex-direction:column;align-items:center;width:100%">
-            <h1 data-reveal="1" class="nmm-hero-eyebrow" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .15s cubic-bezier(.2,.7,.2,1),transform 1.1s .15s cubic-bezier(.2,.7,.2,1);margin:clamp(14px,2.4vh,26px) 0 0;font-family:'Archivo',sans-serif;font-size:clamp(13px,1.25vw,17px);font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#2a1348">Independent Visual Arts Company</h1>
-            <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .22s cubic-bezier(.2,.7,.2,1),transform 1.1s .22s cubic-bezier(.2,.7,.2,1);margin-top:clamp(8px,1.4vh,14px);font-size:clamp(13px,1.2vw,15px);letter-spacing:.04em;color:rgba(42,19,72,.72)" class="nmm-hero-services">Music Videos &nbsp;•&nbsp; Photography &nbsp;•&nbsp; Shorties &nbsp;•&nbsp; Design</div>
+            <h1 data-reveal="1" class="nmm-hero-eyebrow" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .15s cubic-bezier(.2,.7,.2,1),transform 1.1s .15s cubic-bezier(.2,.7,.2,1);margin:clamp(14px,2.4vh,26px) 0 0;font-family:'Archivo',sans-serif;font-size:clamp(13px,1.25vw,17px);font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#fff">Independent Visual Arts Company</h1>
+            <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .22s cubic-bezier(.2,.7,.2,1),transform 1.1s .22s cubic-bezier(.2,.7,.2,1);margin-top:clamp(8px,1.4vh,14px);font-size:clamp(13px,1.2vw,15px);letter-spacing:.04em;color:rgba(255,255,255,.86)" class="nmm-hero-services">Music Videos &nbsp;•&nbsp; Photography &nbsp;•&nbsp; Shorties &nbsp;•&nbsp; Design</div>
             <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .3s cubic-bezier(.2,.7,.2,1),transform 1.1s .3s cubic-bezier(.2,.7,.2,1);margin-top:clamp(18px,3vh,30px);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center" class="nmm-hero-cta">
-              <a onClick="{{ goWork }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:14px;padding:17px 32px;border-radius:999px;background:#241041;color:#fff;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:transform .35s,gap .35s,filter .35s" style-hover="transform:translateY(-2px);gap:20px;filter:brightness(1.15)">View Work <span style="font-size:17px">→</span></a>
-              <a onClick="{{ goContact }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border-radius:999px;border:1px solid rgba(42,19,72,.35);color:#241041;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:border-color .35s,background .35s" style-hover="border-color:#241041;background:rgba(36,16,65,.06)">Start a project</a>
+              <a onClick="{{ goWork }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:14px;padding:17px 32px;border-radius:999px;background:#fff;color:#1b0f4a;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:transform .35s,gap .35s,filter .35s" style-hover="transform:translateY(-2px);gap:20px;filter:brightness(1.15)">View Work <span style="font-size:17px">→</span></a>
+              <a onClick="{{ goContact }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.55);color:#fff;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:border-color .35s,background .35s" style-hover="border-color:#fff;background:rgba(255,255,255,.1)">Start a project</a>
             </div>
           </div>
         </div>
         <div class="nmm-scrollcue" style="position:absolute;right:clamp(20px,5vw,72px);bottom:24px;display:flex;flex-direction:column;align-items:center;gap:9px;animation:nmm-cue 2.4s ease-in-out infinite">
-          <span style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,19,72,.55);writing-mode:vertical-rl">Scroll</span>
-          <span style="width:1px;height:34px;background:linear-gradient(rgba(42,19,72,.5),transparent)"></span>
+          <span style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.7);writing-mode:vertical-rl">Scroll</span>
+          <span style="width:1px;height:34px;background:linear-gradient(rgba(255,255,255,.66),transparent)"></span>
         </div>
       </section>
 
       <!-- DISCIPLINE MARQUEE -->
-      <section style="padding:30px 0;border-top:1px solid rgba(42,19,72,.08);border-bottom:1px solid rgba(42,19,72,.08);overflow:hidden">
+      <section style="padding:30px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);overflow:hidden">
         <div style="display:flex;width:max-content;animation:nmm-marquee 32s linear infinite;gap:0">
           <div style="display:flex;gap:0">
             <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="8">
-              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-style:normal;font-size:clamp(28px,4vw,52px);color:rgba(42,19,72,.16);padding:0 .5em;white-space:nowrap">{{ m }}</span>
+              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-style:normal;font-size:clamp(28px,4vw,52px);color:rgba(255,255,255,.14);padding:0 .5em;white-space:nowrap">{{ m }}</span>
             </sc-for>
           </div>
           <div style="display:flex;gap:0" aria-hidden="true">
             <sc-for list="{{ marquee }}" as="m" hint-placeholder-count="8">
-              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-style:normal;font-size:clamp(28px,4vw,52px);color:rgba(42,19,72,.16);padding:0 .5em;white-space:nowrap">{{ m }}</span>
+              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-style:normal;font-size:clamp(28px,4vw,52px);color:rgba(255,255,255,.14);padding:0 .5em;white-space:nowrap">{{ m }}</span>
             </sc-for>
           </div>
         </div>
       </section>
 
       <!-- SELECTED WORK (Concepts-style rows) -->
-      <section style="padding:clamp(50px,8vh,100px) 0;background:linear-gradient(180deg,rgba(24,12,46,0),rgba(17,9,32,.97) 9%,rgba(17,9,32,.97) 91%,rgba(24,12,46,0))">
+      <section style="padding:clamp(50px,8vh,100px) 0;background:linear-gradient(180deg,rgba(8,5,24,0),rgba(8,5,24,.72) 9%,rgba(8,5,24,.72) 91%,rgba(8,5,24,0))">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);padding:0 clamp(20px,5vw,72px);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(26px,4vh,44px)">
           <h2 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(34px,5.5vw,82px);line-height:.95;color:#fff">Selected <span style="font-style:normal">Work</span></h2>
           <a onClick="{{ goWork }}" data-cursor="hover" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:5px;white-space:nowrap" style-hover="color:#fff;border-color:#fff">All Work →</a>
@@ -160,7 +163,7 @@
       <section style="padding:clamp(60px,10vh,120px) clamp(20px,5vw,72px) clamp(20px,4vh,40px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(26px,4vh,44px)">
           <h2 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(34px,5.5vw,82px);line-height:.95;color:#fff;text-shadow:var(--nmm-glow)">Show<span style="font-style:normal">reel</span></h2>
-          <span style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(42,19,72,.6);white-space:nowrap">{{ reelNote }}</span>
+          <span style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.76);white-space:nowrap">{{ reelNote }}</span>
         </div>
         <div data-reveal="1" onClick="{{ playReel }}" data-cursor="hover" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);position:relative;aspect-ratio:16/9;border-radius:3px;overflow:hidden;cursor:none;box-shadow:0 40px 90px -40px rgba(20,8,40,.8)">
           <image-slot id="nmm-reel" src="{{ reelPoster }}" placeholder="Showreel: video to come" style="--slot-bg:radial-gradient(110% 100% at 30% 30%,#2a1056,#07050b 65%)"></image-slot>
@@ -176,12 +179,12 @@
       <section style="padding:clamp(70px,11vh,150px) clamp(20px,5vw,72px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:clamp(34px,6vh,70px)">
           <h2 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(34px,5.5vw,82px);line-height:.95;color:#fff;text-shadow:var(--nmm-glow)">What We <span style="font-style:normal">Create</span></h2>
-          <p style="margin:0;max-width:330px;font-size:14px;line-height:1.65;color:rgba(42,19,72,.55)">What we make for you: music videos, photography, short form and design. One obsession, making work we believe in, with the artists we believe in.</p>
+          <p style="margin:0;max-width:330px;font-size:14px;line-height:1.65;color:rgba(255,255,255,.7)">What we make for you: music videos, photography, short form and design. One obsession, making work we believe in, with the artists we believe in.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,64px);align-items:start">
           <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s .1s cubic-bezier(.2,.7,.2,1),transform 1.1s .1s cubic-bezier(.2,.7,.2,1)">
             <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="8">
-              <div onMouseEnter="{{ cat.hover }}" onClick="{{ cat.open }}" data-cursor="hover" style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding:clamp(15px,2vh,26px) 4px;border-top:1px solid rgba(42,19,72,.1);cursor:none;transition:padding-left .4s">
+              <div onMouseEnter="{{ cat.hover }}" onClick="{{ cat.open }}" data-cursor="hover" style="display:flex;align-items:center;justify-content:space-between;gap:18px;padding:clamp(15px,2vh,26px) 4px;border-top:1px solid rgba(255,255,255,.14);cursor:none;transition:padding-left .4s">
                 <div style="display:flex;align-items:baseline;gap:16px">
                   <span style="font-family:'Archivo',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:{{ cat.numColor }};min-width:34px;transition:color .35s">{{ cat.num }}</span>
                   <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(24px,3.5vw,46px);line-height:1;color:{{ cat.titleColor }};transition:color .35s,transform .4s;transform:translateX({{ cat.shift }})">{{ cat.name }}</span>
@@ -189,7 +192,7 @@
                 <span style="font-size:13px;color:{{ cat.metaColor }};white-space:nowrap;transition:color .35s">{{ cat.count }}</span>
               </div>
             </sc-for>
-            <div style="border-top:1px solid rgba(42,19,72,.1)"></div>
+            <div style="border-top:1px solid rgba(255,255,255,.14)"></div>
           </div>
           <div style="position:sticky;top:120px;aspect-ratio:4/5;border-radius:3px;overflow:hidden;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)">
             <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="8">
@@ -209,7 +212,7 @@
       <section style="padding:clamp(70px,11vh,140px) clamp(20px,5vw,72px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(30px,5vh,56px)">
           <h2 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(34px,5.5vw,82px);line-height:.95;color:#fff;text-shadow:var(--nmm-glow)"><span style="font-style:normal">Photography</span></h2>
-          <a onClick="{{ goPhoto }}" data-cursor="hover" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(42,19,72,.6);text-decoration:none;cursor:none;border-bottom:1px solid rgba(42,19,72,.3);padding-bottom:5px;white-space:nowrap" style-hover="color:#2a1348;border-color:#2a1348">Full Gallery →</a>
+          <a onClick="{{ goPhoto }}" data-cursor="hover" style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.76);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:5px;white-space:nowrap" style-hover="color:#fff;border-color:#fff">Full Gallery →</a>
         </div>
         <div style="columns:230px;column-gap:clamp(12px,1.6vw,22px)">
           <sc-for list="{{ photoTeaser }}" as="ph" hint-placeholder-count="7">
@@ -235,17 +238,17 @@
       </section>
 
       <!-- CLIENTS MARQUEE -->
-      <section style="padding:clamp(34px,5vh,60px) 0;border-top:1px solid rgba(42,19,72,.08);border-bottom:1px solid rgba(42,19,72,.08);overflow:hidden">
-        <div style="text-align:center;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,19,72,.4);margin-bottom:26px">Artists &amp; Collaborators</div>
+      <section style="padding:clamp(34px,5vh,60px) 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);overflow:hidden">
+        <div style="text-align:center;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:26px">Artists &amp; Collaborators</div>
         <div style="display:flex;width:max-content;animation:nmm-marquee 28s linear infinite">
           <div style="display:flex">
             <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8">
-              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(20px,2.6vw,34px);color:rgba(42,19,72,.4);padding:0 .6em;white-space:nowrap">{{ c }}</span>
+              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(20px,2.6vw,34px);color:rgba(255,255,255,.55);padding:0 .6em;white-space:nowrap">{{ c }}</span>
             </sc-for>
           </div>
           <div style="display:flex" aria-hidden="true">
             <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8">
-              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(20px,2.6vw,34px);color:rgba(42,19,72,.4);padding:0 .6em;white-space:nowrap">{{ c }}</span>
+              <span style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(20px,2.6vw,34px);color:rgba(255,255,255,.55);padding:0 .6em;white-space:nowrap">{{ c }}</span>
             </sc-for>
           </div>
         </div>
@@ -254,16 +257,16 @@
       <!-- CONTACT -->
       <section data-screen-label="Contact" style="padding:clamp(80px,14vh,180px) clamp(20px,5vw,72px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.2s cubic-bezier(.2,.7,.2,1),transform 1.2s cubic-bezier(.2,.7,.2,1);max-width:1200px;margin:0 auto;text-align:center">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:30px">Get In Touch</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:30px">Get In Touch</div>
           <h2 style="margin:0 0 clamp(34px,6vh,60px);font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(38px,8vw,128px);line-height:.92;color:#fff;text-shadow:var(--nmm-glow)">Let's create<br><span style="font-style:normal;background:linear-gradient(105deg,#9a5bff,#2E6BFF 50%,#FF2E9A);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none">something different.</span></h2>
           <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:44px">
-            <a href="mailto:nomarginsmedia@gmail.com" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(42,19,72,.25);border-radius:999px;color:#2a1348;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#2a1348;background:rgba(42,19,72,.05)">✉ nomarginsmedia@gmail.com</a>
-            <a href="https://instagram.com/nomargins_media" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(42,19,72,.25);border-radius:999px;color:#2a1348;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#2a1348;background:rgba(42,19,72,.05)">Instagram</a>
-            <a href="https://youtube.com/@nomargins_media" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(42,19,72,.25);border-radius:999px;color:#2a1348;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#2a1348;background:rgba(42,19,72,.05)">YouTube</a>
-            <a href="https://www.linkedin.com/company/nomargins-media/" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(42,19,72,.25);border-radius:999px;color:#2a1348;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#2a1348;background:rgba(42,19,72,.05)">LinkedIn</a>
-            <a href="https://www.facebook.com/NoMarginsMedia" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(42,19,72,.25);border-radius:999px;color:#2a1348;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#2a1348;background:rgba(42,19,72,.05)">Facebook</a>
+            <a href="mailto:nomarginsmedia@gmail.com" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#fff;background:rgba(255,255,255,.08)">✉ nomarginsmedia@gmail.com</a>
+            <a href="https://instagram.com/nomargins_media" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#fff;background:rgba(255,255,255,.08)">Instagram</a>
+            <a href="https://youtube.com/@nomargins_media" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#fff;background:rgba(255,255,255,.08)">YouTube</a>
+            <a href="https://www.linkedin.com/company/nomargins-media/" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#fff;background:rgba(255,255,255,.08)">LinkedIn</a>
+            <a href="https://www.facebook.com/NoMarginsMedia" target="_blank" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border:1px solid rgba(255,255,255,.32);border-radius:999px;color:#fff;text-decoration:none;cursor:none;font-size:13.5px;font-weight:500;transition:border-color .35s,background .35s" style-hover="border-color:#fff;background:rgba(255,255,255,.08)">Facebook</a>
           </div>
-          <a onClick="{{ goContact }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(42,19,72,.7);text-decoration:none;cursor:none" style-hover="color:#2a1348">Commission a project <span>→</span></a>
+          <a onClick="{{ goContact }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.84);text-decoration:none;cursor:none" style-hover="color:#fff">Commission a project <span>→</span></a>
         </div>
       </section>
 
@@ -275,9 +278,9 @@
     <div data-page-root="1" data-screen-label="Work" style="padding-top:120px">
       <section style="padding:clamp(30px,6vh,70px) clamp(20px,5vw,72px) clamp(24px,4vh,40px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:18px">Portfolio</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:18px">Portfolio</div>
           <h1 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(46px,9vw,150px);line-height:.9;color:#fff;text-shadow:var(--nmm-glow)">Selected <span style="font-style:normal">Work</span></h1>
-          <p style="margin:22px 0 0;max-width:540px;font-size:15px;line-height:1.65;color:rgba(42,19,72,.55)">Music videos, fashion films and live work. Each one a bespoke concept built hand-in-hand with the artist. Click any piece to step inside.</p>
+          <p style="margin:22px 0 0;max-width:540px;font-size:15px;line-height:1.65;color:rgba(255,255,255,.7)">Music videos, fashion films and live work. Each one a bespoke concept built hand-in-hand with the artist. Click any piece to step inside.</p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
             <sc-for list="{{ workTabs }}" as="t" hint-placeholder-count="3">
               <a onClick="{{ t.on }}" data-cursor="hover" style="padding:11px 22px;border:1px solid {{ t.border }};background:{{ t.bg }};border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:{{ t.color }};text-decoration:none;cursor:none;transition:all .3s">{{ t.label }}</a>
@@ -288,7 +291,7 @@
       <section style="padding:0 0 clamp(80px,12vh,150px)">
         <sc-for list="{{ filmRows }}" as="row" hint-placeholder-count="3">
           <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);margin-bottom:clamp(34px,5vh,56px)">
-            <div style="padding:0 clamp(20px,5vw,72px);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,19,72,.55);margin-bottom:18px">{{ row.label }}</div>
+            <div style="padding:0 clamp(20px,5vw,72px);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:18px">{{ row.label }}</div>
             <div class="nmm-scroll" style="display:flex;gap:clamp(14px,1.6vw,24px);overflow-x:auto;padding:0 clamp(20px,5vw,72px);scroll-snap-type:x mandatory">
               <sc-for list="{{ row.items }}" as="f" hint-placeholder-count="4">
                 <div onClick="{{ f.open }}" data-cursor="hover" style="flex:0 0 auto;width:clamp(320px,38vw,520px);scroll-snap-align:start;cursor:none">
@@ -335,25 +338,25 @@
       <section style="padding:clamp(60px,10vh,130px) clamp(20px,5vw,72px);display:grid;grid-template-columns:1fr;gap:clamp(40px,7vh,80px);max-width:1500px;margin:0 auto">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,5vw,80px);align-items:start">
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:22px">Creative Concept</div>
-            <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,2.8vw,38px);line-height:1.25;color:#2a1348">{{ cur.concept }}</p>
-            <p style="margin:26px 0 0;font-size:15px;line-height:1.75;color:rgba(42,19,72,.6);max-width:620px">{{ cur.body }}</p>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:22px">Creative Concept</div>
+            <p style="margin:0;font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(22px,2.8vw,38px);line-height:1.25;color:#fff">{{ cur.concept }}</p>
+            <p style="margin:26px 0 0;font-size:15px;line-height:1.75;color:rgba(255,255,255,.76);max-width:620px">{{ cur.body }}</p>
           </div>
           <div>
-            <div style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:22px">Credits</div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:22px">Credits</div>
             <sc-for list="{{ cur.credits }}" as="cr" hint-placeholder-count="5">
-              <div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid rgba(42,19,72,.1);font-size:14px">
-                <span style="color:rgba(42,19,72,.5)">{{ cr.role }}</span>
+              <div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.14);font-size:14px">
+                <span style="color:rgba(255,255,255,.66)">{{ cr.role }}</span>
                 <span style="font-weight:600;text-align:right">{{ cr.name }}</span>
               </div>
             </sc-for>
-            <div style="border-top:1px solid rgba(42,19,72,.1)"></div>
+            <div style="border-top:1px solid rgba(255,255,255,.14)"></div>
           </div>
         </div>
 
         <!-- BTS GALLERY -->
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:24px">Shoot Day</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:24px">Shoot Day</div>
           <div style="columns:210px;column-gap:clamp(12px,1.6vw,20px)">
             <sc-for list="{{ cur.gallery }}" as="g" hint-placeholder-count="6">
               <div onClick="{{ g.open }}" data-cursor="hover" style="break-inside:avoid;margin-bottom:clamp(12px,1.6vw,20px);border-radius:3px;overflow:hidden;cursor:none">
@@ -386,9 +389,9 @@
     <div data-page-root="1" data-screen-label="Photography" style="padding-top:120px">
       <section style="padding:clamp(30px,6vh,70px) clamp(20px,5vw,72px) clamp(24px,4vh,44px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:18px">Gallery</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:18px">Gallery</div>
           <h1 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-style:normal;font-size:clamp(46px,9vw,150px);line-height:.9;color:#fff;text-shadow:var(--nmm-glow)">Photography</h1>
-          <p style="margin:22px 0 0;max-width:520px;font-size:15px;line-height:1.65;color:rgba(42,19,72,.55)">Live shows, portraits, editorial and the moments between. Click any frame to view full-screen.</p>
+          <p style="margin:22px 0 0;max-width:520px;font-size:15px;line-height:1.65;color:rgba(255,255,255,.7)">Live shows, portraits, editorial and the moments between. Click any frame to view full-screen.</p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
             <sc-for list="{{ workTabs }}" as="t" hint-placeholder-count="3">
               <a onClick="{{ t.on }}" data-cursor="hover" style="padding:11px 22px;border:1px solid {{ t.border }};background:{{ t.bg }};border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:{{ t.color }};text-decoration:none;cursor:none;transition:all .3s">{{ t.label }}</a>
@@ -418,9 +421,9 @@
     <div data-page-root="1" data-screen-label="Shootday" style="padding-top:120px">
       <section style="padding:clamp(30px,6vh,70px) clamp(20px,5vw,72px) clamp(24px,4vh,44px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:18px">Behind the scenes</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:18px">Behind the scenes</div>
           <h1 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(46px,9vw,150px);line-height:.9;color:#fff;text-shadow:var(--nmm-glow)">#SHOOTDAY</h1>
-          <p style="margin:22px 0 0;max-width:540px;font-size:15px;line-height:1.65;color:rgba(42,19,72,.55)">Shoot day is always the best day. The sets, the chaos and the people behind the work.</p>
+          <p style="margin:22px 0 0;max-width:540px;font-size:15px;line-height:1.65;color:rgba(255,255,255,.7)">Shoot day is always the best day. The sets, the chaos and the people behind the work.</p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
             <sc-for list="{{ workTabs }}" as="t" hint-placeholder-count="4">
               <a onClick="{{ t.on }}" data-cursor="hover" style="padding:11px 22px;border:1px solid {{ t.border }};background:{{ t.bg }};border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:{{ t.color }};text-decoration:none;cursor:none;transition:all .3s">{{ t.label }}</a>
@@ -448,9 +451,9 @@
     <div data-page-root="1" data-screen-label="Scroll And Get Lost" style="padding-top:120px">
       <section style="padding:clamp(30px,6vh,70px) clamp(20px,5vw,72px) clamp(24px,4vh,44px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:18px">Everything we have made</div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:18px">Everything we have made</div>
           <h1 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(46px,9vw,150px);line-height:.9;color:#fff;text-shadow:var(--nmm-glow)">Scroll &amp; Get Lost</h1>
-          <p style="margin:22px 0 0;max-width:540px;font-size:15px;line-height:1.65;color:rgba(42,19,72,.55)">Every project, every frame. Keep scrolling, it does not end.</p>
+          <p style="margin:22px 0 0;max-width:540px;font-size:15px;line-height:1.65;color:rgba(255,255,255,.7)">Every project, every frame. Keep scrolling, it does not end.</p>
           <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:30px">
             <sc-for list="{{ workTabs }}" as="t" hint-placeholder-count="4">
               <a onClick="{{ t.on }}" data-cursor="hover" style="padding:11px 22px;border:1px solid {{ t.border }};background:{{ t.bg }};border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:{{ t.color }};text-decoration:none;cursor:none;transition:all .3s">{{ t.label }}</a>
@@ -482,8 +485,8 @@
     <div data-page-root="1" data-screen-label="About" style="padding-top:120px">
       <section style="padding:clamp(40px,8vh,110px) clamp(20px,5vw,72px) clamp(40px,6vh,70px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);max-width:1100px">
-          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:24px">Est. 2020 · Six active years</div>
-          <h1 style="margin:0;font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,5.2vw,80px);line-height:1.06">Crazy, <span style="font-style:normal">creative</span> and unique. We build communities around the art we make, <span style="font-style:normal;color:#4d14b0">artists first</span>, always.</h1>
+          <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:24px">Est. 2020 · Six active years</div>
+          <h1 style="margin:0;font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,5.2vw,80px);line-height:1.06">Crazy, <span style="font-style:normal">creative</span> and unique. We build communities around the art we make, <span style="font-style:normal;color:#b98cff">artists first</span>, always.</h1>
         </div>
       </section>
       <section style="padding:0 clamp(20px,5vw,72px) clamp(40px,6vh,70px)">
@@ -492,28 +495,28 @@
             <image-slot id="nmm-about-team" src="people/team.png" placeholder="Drop a team / studio photo" style="--slot-bg:radial-gradient(110% 100% at 40% 30%,#2a1056,#07050b 65%)"></image-slot>
           </div>
           <div>
-            <p style="margin:0 0 20px;font-size:16px;line-height:1.8;color:rgba(42,19,72,.72)">Founded in 2020 by <strong style="color:#2a1348;font-weight:600">Sensei Sand</strong>, shortly thereafter joined by <strong style="color:#2a1348;font-weight:600">Pikachu</strong>, and lastly by <strong style="color:#2a1348;font-weight:600">Ross Holmes</strong> in 2022.</p>
-            <p style="margin:0 0 20px;font-size:16px;line-height:1.8;color:rgba(42,19,72,.72)">Across six active years we've accumulated a plethora of music videos, visualisers, live music videography, photography and more, working closely with each artist to develop unique concepts made to showcase the intentions of every project.</p>
-            <p style="margin:0;font-size:16px;line-height:1.8;color:rgba(42,19,72,.72)">Our number one priority is keeping the process smooth, efficient and, most importantly, fun. In any case, <em style="color:#b0106e">shoot day is always the best day.</em></p>
+            <p style="margin:0 0 20px;font-size:16px;line-height:1.8;color:rgba(255,255,255,.86)">Founded in 2020 by <strong style="color:#fff;font-weight:600">Sensei Sand</strong>, shortly thereafter joined by <strong style="color:#fff;font-weight:600">Pikachu</strong>, and lastly by <strong style="color:#fff;font-weight:600">Ross Holmes</strong> in 2022.</p>
+            <p style="margin:0 0 20px;font-size:16px;line-height:1.8;color:rgba(255,255,255,.86)">Across six active years we've accumulated a plethora of music videos, visualisers, live music videography, photography and more, working closely with each artist to develop unique concepts made to showcase the intentions of every project.</p>
+            <p style="margin:0;font-size:16px;line-height:1.8;color:rgba(255,255,255,.86)">Our number one priority is keeping the process smooth, efficient and, most importantly, fun. In any case, <em style="color:#FF6FB8">shoot day is always the best day.</em></p>
           </div>
         </div>
       </section>
       <section style="padding:clamp(40px,7vh,90px) clamp(20px,5vw,72px) clamp(80px,12vh,150px)">
-        <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:10px">The Founders</div>
+        <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:10px">The Founders</div>
         <sc-for list="{{ founders }}" as="f" hint-placeholder-count="3">
-          <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:flex;flex-wrap:wrap;flex-direction:{{ f.dir }};gap:clamp(28px,5vw,80px);align-items:center;padding:clamp(36px,7vh,80px) 0;border-top:1px solid rgba(42,19,72,.12)">
+          <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:flex;flex-wrap:wrap;flex-direction:{{ f.dir }};gap:clamp(28px,5vw,80px);align-items:center;padding:clamp(36px,7vh,80px) 0;border-top:1px solid rgba(255,255,255,.16)">
             <div style="flex:1 1 280px;max-width:460px;aspect-ratio:3/4;border-radius:3px;overflow:hidden">
               <image-slot id="{{ f.slot }}" src="{{ f.src }}" placeholder="{{ f.name }}" style="--slot-bg:{{ f.grad }}"></image-slot>
             </div>
             <div style="flex:1 1 320px;min-width:0">
-              <div style="font-size:12px;color:rgba(42,19,72,.5);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px">Joined {{ f.year }}</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.66);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px">Joined {{ f.year }}</div>
               <h2 style="margin:0;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(46px,7vw,104px);line-height:.9;color:#fff;text-shadow:var(--nmm-glow)">{{ f.name }}</h2>
-              <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#c2127a;margin-top:16px">{{ f.role }}</div>
-              <p style="margin:24px 0 0;max-width:520px;font-size:16px;line-height:1.8;color:rgba(42,19,72,.72)">{{ f.bio }}</p>
+              <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#FF6FB8;margin-top:16px">{{ f.role }}</div>
+              <p style="margin:24px 0 0;max-width:520px;font-size:16px;line-height:1.8;color:rgba(255,255,255,.86)">{{ f.bio }}</p>
             </div>
           </div>
         </sc-for>
-        <div style="border-top:1px solid rgba(42,19,72,.12)"></div>
+        <div style="border-top:1px solid rgba(255,255,255,.16)"></div>
       </section>
     </div>
     </sc-if>
@@ -524,31 +527,31 @@
       <section style="padding:clamp(40px,8vh,110px) clamp(20px,5vw,72px) clamp(80px,12vh,150px)">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(40px,7vw,110px);max-width:1400px;margin:0 auto">
           <div data-reveal="1" style="opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)">
-            <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:24px">Commission</div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:24px">Commission</div>
             <h1 style="margin:0 0 30px;font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(40px,6.5vw,104px);line-height:.92;color:#fff;text-shadow:var(--nmm-glow)">Let's create<br><span style="font-style:normal;background:linear-gradient(105deg,#9a5bff,#2E6BFF 50%,#FF2E9A);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none">something different.</span></h1>
-            <p style="margin:0 0 34px;font-size:16px;line-height:1.7;color:rgba(42,19,72,.6);max-width:440px">Tell us about your project, the artist, the vision, the timeline. We'll bring the rest.</p>
+            <p style="margin:0 0 34px;font-size:16px;line-height:1.7;color:rgba(255,255,255,.76);max-width:440px">Tell us about your project, the artist, the vision, the timeline. We'll bring the rest.</p>
             <div style="display:flex;flex-direction:column;gap:18px">
-              <a href="mailto:nomarginsmedia@gmail.com" data-cursor="hover" style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(18px,2vw,26px);text-decoration:none;cursor:none;border-bottom:1px solid rgba(42,19,72,.2);padding-bottom:10px;transition:border-color .35s;color:#fff;text-shadow:var(--nmm-glow)" style-hover="border-color:#FF6FB8">nomarginsmedia@gmail.com</a>
-              <div class="nmm-contact-social" style="display:flex;gap:24px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(42,19,72,.6)">
-                <a href="https://instagram.com/nomargins_media" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#2a1348">Instagram ↗</a>
-                <a href="https://youtube.com/@nomargins_media" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#2a1348">YouTube ↗</a>
-                <a href="https://www.linkedin.com/company/nomargins-media/" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#2a1348">LinkedIn ↗</a>
-                <a href="https://www.facebook.com/NoMarginsMedia" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#2a1348">Facebook ↗</a>
+              <a href="mailto:nomarginsmedia@gmail.com" data-cursor="hover" style="font-family:var(--nmm-display);font-weight:900;text-transform:uppercase;letter-spacing:0;font-size:clamp(18px,2vw,26px);text-decoration:none;cursor:none;border-bottom:1px solid rgba(255,255,255,.26);padding-bottom:10px;transition:border-color .35s;color:#fff;text-shadow:var(--nmm-glow)" style-hover="border-color:#FF6FB8">nomarginsmedia@gmail.com</a>
+              <div class="nmm-contact-social" style="display:flex;gap:24px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.76)">
+                <a href="https://instagram.com/nomargins_media" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#fff">Instagram ↗</a>
+                <a href="https://youtube.com/@nomargins_media" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#fff">YouTube ↗</a>
+                <a href="https://www.linkedin.com/company/nomargins-media/" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#fff">LinkedIn ↗</a>
+                <a href="https://www.facebook.com/NoMarginsMedia" target="_blank" data-cursor="hover" style="color:inherit;text-decoration:none;cursor:none" style-hover="color:#fff">Facebook ↗</a>
               </div>
             </div>
           </div>
           <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s .1s cubic-bezier(.2,.7,.2,1),transform 1.1s .1s cubic-bezier(.2,.7,.2,1)">
             <div style="display:flex;flex-direction:column;gap:20px">
               <label style="display:block">
-                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:10px">Name</span>
-                <input value="{{ form.name }}" onInput="{{ setName }}" placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(42,19,72,.2);padding:10px 0;color:#2a1348;font-family:'Archivo',sans-serif;font-size:16px;outline:none">
+                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:10px">Name</span>
+                <input value="{{ form.name }}" onInput="{{ setName }}" placeholder="Your name" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.26);padding:10px 0;color:#fff;font-family:'Archivo',sans-serif;font-size:16px;outline:none">
               </label>
               <label style="display:block">
-                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:10px">Email</span>
-                <input value="{{ form.email }}" onInput="{{ setEmail }}" placeholder="you@email.com" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(42,19,72,.2);padding:10px 0;color:#2a1348;font-family:'Archivo',sans-serif;font-size:16px;outline:none">
+                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:10px">Email</span>
+                <input value="{{ form.email }}" onInput="{{ setEmail }}" placeholder="you@email.com" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.26);padding:10px 0;color:#fff;font-family:'Archivo',sans-serif;font-size:16px;outline:none">
               </label>
               <label style="display:block">
-                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:10px">Project type</span>
+                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:10px">Project type</span>
                 <div style="display:flex;flex-wrap:wrap;gap:10px">
                   <sc-for list="{{ projectTypes }}" as="t" hint-placeholder-count="5">
                     <button onClick="{{ t.on }}" data-cursor="hover" style="padding:9px 16px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-family:'Archivo',sans-serif;font-size:12.5px;cursor:none;transition:all .3s">{{ t.label }}</button>
@@ -556,8 +559,8 @@
                 </div>
               </label>
               <label style="display:block">
-                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,19,72,.5);margin-bottom:10px">Tell us about it</span>
-                <textarea value="{{ form.brief }}" onInput="{{ setBrief }}" rows="4" placeholder="The artist, the vision, the timeline…" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(42,19,72,.2);padding:10px 0;color:#2a1348;font-family:'Archivo',sans-serif;font-size:16px;outline:none;resize:vertical"></textarea>
+                <span style="display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-bottom:10px">Tell us about it</span>
+                <textarea value="{{ form.brief }}" onInput="{{ setBrief }}" rows="4" placeholder="The artist, the vision, the timeline…" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.26);padding:10px 0;color:#fff;font-family:'Archivo',sans-serif;font-size:16px;outline:none;resize:vertical"></textarea>
               </label>
               <button onClick="{{ submitForm }}" data-cursor="hover" style="margin-top:8px;align-self:flex-start;display:inline-flex;align-items:center;gap:12px;padding:16px 32px;border-radius:999px;border:none;background:linear-gradient(105deg,#7B2FF7,#2E6BFF 55%,#FF2E9A);color:#fff;font-family:'Archivo',sans-serif;font-size:14px;font-weight:600;letter-spacing:.04em;cursor:none;transition:transform .3s,filter .3s" style-hover="transform:translateY(-2px);filter:brightness(1.12)">{{ submitLabel }} <span>→</span></button>
             </div>
@@ -595,29 +598,29 @@
   </sc-if>
 
   <!-- FOOTER -->
-  <footer style="border-top:1px solid rgba(42,19,72,.1);padding:clamp(50px,8vh,90px) clamp(20px,5vw,72px) 40px">
+  <footer style="border-top:1px solid rgba(255,255,255,.14);padding:clamp(50px,8vh,90px) clamp(20px,5vw,72px) 40px">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;margin-bottom:clamp(40px,7vh,80px)">
       <div>
         <img src="logo-nmm.png" alt="No Margins Media" style="height:clamp(110px,16vw,190px);width:auto;display:block">
       </div>
       <div style="display:flex;gap:clamp(30px,5vw,90px);flex-wrap:wrap">
         <div style="display:flex;flex-direction:column;gap:14px">
-          <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,19,72,.4);margin-bottom:4px">Explore</span>
+          <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Explore</span>
           <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="6">
-            <a onClick="{{ link.on }}" data-cursor="hover" style="font-size:14px;color:rgba(42,19,72,.7);text-decoration:none;cursor:none;transition:color .3s" style-hover="color:#2a1348">{{ link.label }}</a>
+            <a onClick="{{ link.on }}" data-cursor="hover" style="font-size:14px;color:rgba(255,255,255,.84);text-decoration:none;cursor:none;transition:color .3s" style-hover="color:#fff">{{ link.label }}</a>
           </sc-for>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px">
-          <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,19,72,.4);margin-bottom:4px">Connect</span>
-          <a href="mailto:nomarginsmedia@gmail.com" data-cursor="hover" style="font-size:14px;color:rgba(42,19,72,.7);text-decoration:none;cursor:none" style-hover="color:#2a1348">Email</a>
-          <a href="https://instagram.com/nomargins_media" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(42,19,72,.7);text-decoration:none;cursor:none" style-hover="color:#2a1348">Instagram</a>
-          <a href="https://youtube.com/@nomargins_media" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(42,19,72,.7);text-decoration:none;cursor:none" style-hover="color:#2a1348">YouTube</a>
-          <a href="https://www.linkedin.com/company/nomargins-media/" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(42,19,72,.7);text-decoration:none;cursor:none" style-hover="color:#2a1348">LinkedIn</a>
-          <a href="https://www.facebook.com/NoMarginsMedia" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(42,19,72,.7);text-decoration:none;cursor:none" style-hover="color:#2a1348">Facebook</a>
+          <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px">Connect</span>
+          <a href="mailto:nomarginsmedia@gmail.com" data-cursor="hover" style="font-size:14px;color:rgba(255,255,255,.84);text-decoration:none;cursor:none" style-hover="color:#fff">Email</a>
+          <a href="https://instagram.com/nomargins_media" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(255,255,255,.84);text-decoration:none;cursor:none" style-hover="color:#fff">Instagram</a>
+          <a href="https://youtube.com/@nomargins_media" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(255,255,255,.84);text-decoration:none;cursor:none" style-hover="color:#fff">YouTube</a>
+          <a href="https://www.linkedin.com/company/nomargins-media/" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(255,255,255,.84);text-decoration:none;cursor:none" style-hover="color:#fff">LinkedIn</a>
+          <a href="https://www.facebook.com/NoMarginsMedia" target="_blank" data-cursor="hover" style="font-size:14px;color:rgba(255,255,255,.84);text-decoration:none;cursor:none" style-hover="color:#fff">Facebook</a>
         </div>
       </div>
     </div>
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12px;color:rgba(42,19,72,.35);border-top:1px solid rgba(42,19,72,.08);padding-top:24px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:12px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.1);padding-top:24px">
       <span>© 2026 Nomargins Media, Independent Creative Studio</span>
       <span>Crazy, creative &amp; unique · Est. 2020</span>
     </div>
@@ -763,10 +766,10 @@ class Component extends DCLogic {
       {label:'Photography',page:'photography'},
       {label:'#SHOOTDAY',page:'shootday'},
       {label:'Scroll & Get Lost',page:'lost'},
-    ].map(t=>({label:t.label, on:go(t.page), color: page===t.page?'#2a1348':'rgba(42,19,72,.55)', bg: page===t.page?'rgba(255,46,154,.12)':'transparent', border: page===t.page?'#FF6FB8':'rgba(42,19,72,.2)'}));
+    ].map(t=>({label:t.label, on:go(t.page), color: page===t.page?'#fff':'rgba(255,255,255,.7)', bg: page===t.page?'rgba(255,46,154,.12)':'transparent', border: page===t.page?'#FF6FB8':'rgba(255,255,255,.26)'}));
     const navLinks = navItems.map(n => ({
       label:n.label, on:go(n.page),
-      color: (page===n.page || (n.page==='work' && ['project','photography','shootday','lost'].includes(page))) ? '#2a1348' : 'rgba(42,19,72,.6)'
+      color: (page===n.page || (n.page==='work' && ['project','photography','shootday','lost'].includes(page))) ? '#fff' : 'rgba(255,255,255,.76)'
     }));
 
     const filmRows = [
@@ -787,8 +790,8 @@ class Component extends DCLogic {
       slot:'nmm-cat-'+i, img:c.img, grad:this.g(i),
       op: i===s.activeCat ? 1 : 0,
       titleColor: i===s.activeCat ? '#fff' : 'rgba(255,255,255,.55)',
-      numColor: i===s.activeCat ? '#FF6FB8' : 'rgba(42,19,72,.3)',
-      metaColor: i===s.activeCat ? 'rgba(42,19,72,.7)' : 'rgba(42,19,72,.3)',
+      numColor: i===s.activeCat ? '#FF6FB8' : 'rgba(255,255,255,.45)',
+      metaColor: i===s.activeCat ? 'rgba(255,255,255,.84)' : 'rgba(255,255,255,.45)',
       shift: i===s.activeCat ? '14px' : '0px',
       hover: () => this.setState({activeCat:i}),
       open: go(c.page),
@@ -832,9 +835,9 @@ class Component extends DCLogic {
 
     const projectTypes = this.PTYPES.map(t=>({
       label:t, on:()=>this.setState({form:{...s.form,type:t}}),
-      border: s.form.type===t ? '#FF6FB8' : 'rgba(42,19,72,.2)',
+      border: s.form.type===t ? '#FF6FB8' : 'rgba(255,255,255,.26)',
       bg: s.form.type===t ? 'rgba(255,46,154,.12)' : 'transparent',
-      color: s.form.type===t ? '#2a1348' : 'rgba(42,19,72,.6)',
+      color: s.form.type===t ? '#fff' : 'rgba(255,255,255,.76)',
     }));
 
     return {
@@ -971,8 +974,8 @@ class Component extends DCLogic {
       if(nav){
         if(y > 90 && y > last){ nav.style.transform='translateY(-100%)'; }
         else { nav.style.transform='translateY(0)'; }
-        if(y > 40){ nav.style.background='rgba(186,160,232,.88)'; nav.style.backdropFilter='blur(14px)'; nav.style.borderBottomColor='rgba(42,19,72,.12)'; }
-        else { nav.style.background='rgba(196,172,236,.55)'; nav.style.backdropFilter='blur(10px)'; nav.style.borderBottomColor='rgba(42,19,72,.06)'; }
+        if(y > 40){ nav.style.background='rgba(52,28,112,.86)'; nav.style.backdropFilter='blur(14px)'; nav.style.borderBottomColor='rgba(255,255,255,.16)'; }
+        else { nav.style.background='rgba(74,40,140,.5)'; nav.style.backdropFilter='blur(10px)'; nav.style.borderBottomColor='rgba(255,255,255,.08)'; }
       }
       const vh = innerHeight;
       document.querySelectorAll('[data-parallax]').forEach(el=>{
