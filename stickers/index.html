@@ -326,6 +326,15 @@
     /* Let vertical swipes scroll the host page on touch screens; sideways pulls still peel.
        !important overrides the inline touch-action peel.js sets on its canvas. */
     html.embed .stage, html.embed .stage canvas { touch-action: pan-y !important; }
+    /* Wide (desktop) embeds: fade the drawing area out towards the frame edges so a peeled-off
+       sticker dissolves instead of being cut off in a straight line. The sticker itself sits
+       well inside the opaque zone. Phones (narrow frames) are left exactly as they were. */
+    @media (min-width: 600px) {
+      html.embed .stage canvas {
+        -webkit-mask-image: radial-gradient(ellipse 50% 46% at 50% 46%, #000 82%, transparent 100%);
+        mask-image: radial-gradient(ellipse 50% 46% at 50% 46%, #000 82%, transparent 100%);
+      }
+    }
   </style>
   <script>if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('embed');</script>
 </head>

@@ -44,6 +44,18 @@
     .nmm-scrollcue{display:none!important}
   }
   .nmm-sticker iframe{height:clamp(548px,66svh,700px)}
+  /* Desktop hero: subheading and buttons on the left, sticker on the right. Nothing here applies below 900px. */
+  @media (min-width:900px){
+    .nmm-hero-wrap{flex-direction:row!important;justify-content:space-between!important;gap:clamp(30px,5vw,72px);max-width:1500px!important;text-align:left!important}
+    .nmm-hero-text{order:1;flex:1 1 460px;width:auto!important;min-width:0;align-items:flex-start!important;position:relative;z-index:2}
+    .nmm-sticker{order:2;flex:0 0 auto;width:min(100%,440px)!important}
+    /* The frame is wider than its 440px column (135px spare each side) so a peeled-off sticker isn't cut off at the
+       frame edge. It stays under 720px so the sticker keeps its compact layout; the text column sits above it (z-index). */
+    .nmm-sticker iframe{height:clamp(616px,68svh,650px);width:calc(100% + 270px)!important;margin:0 -135px}
+    .nmm-hero-eyebrow{margin:0!important;font-family:var(--nmm-display)!important;font-weight:900!important;font-size:clamp(56px,7.4vw,128px)!important;line-height:.86!important;letter-spacing:0!important;color:#fff!important;text-shadow:var(--nmm-glow);text-wrap:balance;max-width:9em}
+    .nmm-hero-services{margin-top:clamp(20px,3.4vh,34px)!important;font-size:clamp(14px,1.4vw,17px)!important}
+    .nmm-hero-cta{margin-top:clamp(26px,4vh,42px)!important;justify-content:flex-start!important}
+  }
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -76,16 +88,18 @@
       <!-- HERO -->
       <section style="position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;padding:30px clamp(20px,5vw,72px) clamp(40px,6vh,70px)">
         <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(70% 60% at 12% 18%,rgba(255,110,190,.28),transparent 62%),radial-gradient(70% 65% at 92% 88%,rgba(74,120,255,.32),transparent 60%),radial-gradient(50% 50% at 60% 40%,rgba(154,91,255,.16),transparent 70%)"></div>
-        <!-- Centred hero: sticker, then the subheading (the page's h1), then the two calls to action. -->
-        <div style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;max-width:1100px;margin:0 auto">
+        <!-- Hero. Phones/tablets: centred stack (sticker, subheading, buttons). Desktop (900px+): text left, sticker right, via the .nmm-hero-* rules. -->
+        <div class="nmm-hero-wrap" style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;max-width:1100px;margin:0 auto">
           <div data-reveal="1" data-sticker="1" class="nmm-sticker" style="opacity:0;transform:translateY(30px);transition:opacity 1.2s cubic-bezier(.2,.7,.2,1),transform 1.2s cubic-bezier(.2,.7,.2,1);position:relative;width:min(100%,700px)">
             <iframe src="stickers/index.html?embed" title="No Margins Media interactive sticker collection" style="display:block;width:100%;border:0;background:transparent"></iframe>
           </div>
-          <h1 data-reveal="1" class="nmm-hero-eyebrow" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .15s cubic-bezier(.2,.7,.2,1),transform 1.1s .15s cubic-bezier(.2,.7,.2,1);margin:clamp(14px,2.4vh,26px) 0 0;font-family:'Archivo',sans-serif;font-size:clamp(13px,1.25vw,17px);font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#2a1348">Independent Visual Arts Company</h1>
-          <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .22s cubic-bezier(.2,.7,.2,1),transform 1.1s .22s cubic-bezier(.2,.7,.2,1);margin-top:clamp(8px,1.4vh,14px);font-size:clamp(13px,1.2vw,15px);letter-spacing:.04em;color:rgba(42,19,72,.72)">Music Videos &nbsp;•&nbsp; Photography &nbsp;•&nbsp; Shorties &nbsp;•&nbsp; Design</div>
-          <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .3s cubic-bezier(.2,.7,.2,1),transform 1.1s .3s cubic-bezier(.2,.7,.2,1);margin-top:clamp(18px,3vh,30px);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center">
-            <a onClick="{{ goWork }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:14px;padding:17px 32px;border-radius:999px;background:#241041;color:#fff;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:transform .35s,gap .35s,filter .35s" style-hover="transform:translateY(-2px);gap:20px;filter:brightness(1.15)">View Work <span style="font-size:17px">→</span></a>
-            <a onClick="{{ goContact }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border-radius:999px;border:1px solid rgba(42,19,72,.35);color:#241041;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:border-color .35s,background .35s" style-hover="border-color:#241041;background:rgba(36,16,65,.06)">Start a project</a>
+          <div class="nmm-hero-text" style="display:flex;flex-direction:column;align-items:center;width:100%">
+            <h1 data-reveal="1" class="nmm-hero-eyebrow" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .15s cubic-bezier(.2,.7,.2,1),transform 1.1s .15s cubic-bezier(.2,.7,.2,1);margin:clamp(14px,2.4vh,26px) 0 0;font-family:'Archivo',sans-serif;font-size:clamp(13px,1.25vw,17px);font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#2a1348">Independent Visual Arts Company</h1>
+            <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .22s cubic-bezier(.2,.7,.2,1),transform 1.1s .22s cubic-bezier(.2,.7,.2,1);margin-top:clamp(8px,1.4vh,14px);font-size:clamp(13px,1.2vw,15px);letter-spacing:.04em;color:rgba(42,19,72,.72)" class="nmm-hero-services">Music Videos &nbsp;•&nbsp; Photography &nbsp;•&nbsp; Shorties &nbsp;•&nbsp; Design</div>
+            <div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity 1.1s .3s cubic-bezier(.2,.7,.2,1),transform 1.1s .3s cubic-bezier(.2,.7,.2,1);margin-top:clamp(18px,3vh,30px);display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center" class="nmm-hero-cta">
+              <a onClick="{{ goWork }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:14px;padding:17px 32px;border-radius:999px;background:#241041;color:#fff;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:transform .35s,gap .35s,filter .35s" style-hover="transform:translateY(-2px);gap:20px;filter:brightness(1.15)">View Work <span style="font-size:17px">→</span></a>
+              <a onClick="{{ goContact }}" data-cursor="hover" style="display:inline-flex;align-items:center;gap:10px;padding:17px 28px;border-radius:999px;border:1px solid rgba(42,19,72,.35);color:#241041;text-decoration:none;cursor:none;font-size:14px;font-weight:600;letter-spacing:.04em;transition:border-color .35s,background .35s" style-hover="border-color:#241041;background:rgba(36,16,65,.06)">Start a project</a>
+            </div>
           </div>
         </div>
         <div class="nmm-scrollcue" style="position:absolute;right:clamp(20px,5vw,72px);bottom:24px;display:flex;flex-direction:column;align-items:center;gap:9px;animation:nmm-cue 2.4s ease-in-out infinite">
