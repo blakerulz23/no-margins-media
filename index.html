@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Metal+Mania&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23241041'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-size='28' font-weight='900' fill='%23fff'%3ENM%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="favicon.png">
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#07050b"/><text x="50" y="44" font-family="Archivo Black, Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="-1" fill="#ffffff" text-anchor="middle">NO</text><text x="50" y="62" font-family="Archivo Black, Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="-1" text-anchor="middle" fill="url(#g)">MARGINS</text><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a5bff"/><stop offset="0.5" stop-color="#2E6BFF"/><stop offset="1" stop-color="#FF2E9A"/></linearGradient></defs></svg></template>
 <style>
   :root{--nmm-display:'Metal Mania','Archivo Black',sans-serif}
@@ -56,10 +56,9 @@
   <div data-cursor-ring="1" style="position:fixed;left:0;top:0;width:38px;height:38px;border:1px solid rgba(255,255,255,.7);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:width .28s cubic-bezier(.2,.7,.2,1),height .28s cubic-bezier(.2,.7,.2,1),background .28s,opacity .3s;will-change:left,top;opacity:0"></div>
   <div data-cursor-dot="1" style="position:fixed;left:0;top:0;width:5px;height:5px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9999;mix-blend-mode:difference;will-change:left,top;opacity:0"></div>
 
-  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;z-index:7000;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,4vw,56px);transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s,backdrop-filter .4s,border-color .4s;background:rgba(196,172,236,.55);backdrop-filter:blur(10px);border-bottom:1px solid rgba(42,19,72,.08)">
+  <nav data-nav="1" style="position:fixed;top:0;left:0;right:0;z-index:7000;display:flex;align-items:center;justify-content:space-between;padding:8px clamp(20px,4vw,56px);transition:transform .5s cubic-bezier(.2,.7,.2,1),background .4s,backdrop-filter .4s,border-color .4s;background:rgba(196,172,236,.55);backdrop-filter:blur(10px);border-bottom:1px solid rgba(42,19,72,.08)">
     <a onClick="{{ goHome }}" data-cursor="hover" style="display:flex;align-items:center;gap:11px;cursor:none;text-decoration:none">
-      <!-- Text wordmark until the client's logo PNG arrives (no AI logo). -->
-      <span class="nmm-navword" style="font-family:var(--nmm-display);letter-spacing:.02em;font-size:clamp(22px,2.2vw,28px);line-height:1;color:#241041">NOMARGINS</span>
+      <img class="nmm-navlogo" src="logo-nmm.png" alt="No Margins Media" style="height:clamp(50px,5vw,68px);width:auto;display:block">
     </a>
     <div class="nmm-navlinks" style="display:flex;align-items:center;gap:clamp(14px,2vw,34px)">
       <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="6">
@@ -586,8 +585,7 @@
   <footer style="border-top:1px solid rgba(42,19,72,.1);padding:clamp(50px,8vh,90px) clamp(20px,5vw,72px) 40px">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;margin-bottom:clamp(40px,7vh,80px)">
       <div>
-        <!-- Text wordmark until the client's logo PNG arrives (no AI logo). -->
-        <div style="font-family:var(--nmm-display);font-size:clamp(56px,9vw,120px);line-height:.85;letter-spacing:.01em;color:#241041">NO<br>MARGINS</div>
+        <img src="logo-nmm.png" alt="No Margins Media" style="height:clamp(110px,16vw,190px);width:auto;display:block">
       </div>
       <div style="display:flex;gap:clamp(30px,5vw,90px);flex-wrap:wrap">
         <div style="display:flex;flex-direction:column;gap:14px">
