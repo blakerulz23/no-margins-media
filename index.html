@@ -497,7 +497,7 @@
       <section style="padding:0 clamp(20px,5vw,72px) clamp(40px,6vh,70px)">
         <div data-reveal="1" style="opacity:0;transform:translateY(40px);transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(30px,5vw,80px);align-items:center;max-width:1400px">
           <div style="aspect-ratio:4/3;border-radius:3px;overflow:hidden">
-            <image-slot id="nmm-about-team" src="people/team.png" placeholder="Drop a team / studio photo" style="--slot-bg:radial-gradient(110% 100% at 40% 30%,#2a1056,#07050b 65%)"></image-slot>
+            <image-slot id="nmm-about-team" src="people/team.jpg" placeholder="Drop a team / studio photo" style="--slot-bg:radial-gradient(110% 100% at 40% 30%,#2a1056,#07050b 65%)"></image-slot>
           </div>
           <div>
             <p style="margin:0 0 20px;font-size:16px;line-height:1.8;color:rgba(255,255,255,.86)">Founded in 2020 by <strong style="color:#fff;font-weight:600">Sensei Sand</strong>, shortly thereafter joined by <strong style="color:#fff;font-weight:600">Pikachu</strong>, and lastly by <strong style="color:#fff;font-weight:600">Ross Holmes</strong> in 2022.</p>
@@ -657,7 +657,7 @@ class Component extends DCLogic {
     'linear-gradient(150deg,#2a0f4d,#0a0710 55%,#142a66)',
   ];
   g(i){ return this.PALETTE[i % this.PALETTE.length]; }
-  PHOTOS = ['photos/p1.jpeg','photos/p2.jpeg','photos/p3.jpeg','photos/p4.jpeg','photos/p5.png','photos/p6.jpeg','photos/p7.jpeg','photos/p8.jpeg','photos/p9.jpeg','photos/p10.jpeg'];
+  PHOTOS = ['photos/p1.jpeg','photos/p2.jpeg','photos/p3.jpeg','photos/p4.jpeg','photos/p5.jpeg','photos/p6.jpeg','photos/p7.jpeg','photos/p8.jpeg','photos/p9.jpeg','photos/p10.jpeg'];
   // Showreel: set when the reel arrives, e.g. {t:'yt',v:'YOUTUBE_ID'} or {t:'mp4',v:'videos/reel.mp4',poster:'photos/reel-still.jpg'}
   REEL = null;
   // #SHOOTDAY behind-the-scenes photos: add file paths here, e.g. 'photos/bts/01.jpeg'
@@ -669,8 +669,8 @@ class Component extends DCLogic {
     si:{t:'yt',v:'SR_Xf2473X8'},
     doom:{t:'yt',v:'6kO9skjdQIo'},
     format:{t:'ig',v:'DKsVCNxOS87'},
-    avirex:{t:'mp4',v:'videos/avirex.mp4',poster:'photos/avirex-still.png'},
-    format:{t:'mp4',v:'videos/format.mp4',poster:'photos/format-still.png'},
+    avirex:{t:'mp4',v:'videos/avirex.mp4',poster:'photos/avirex-still.jpg'},
+    format:{t:'mp4',v:'videos/format.mp4',poster:'photos/format-still.jpg'},
   };
   vid(id){ return id==='reel' ? this.REEL : this.VIDS[id]; }
   embedSrc(id){ const v=this.vid(id); if(!v) return ''; return v.t==='yt' ? ('https://www.youtube.com/embed/'+v.v+'?autoplay=1&rel=0') : ('https://www.instagram.com/reel/'+v.v+'/embed'); }
@@ -722,9 +722,9 @@ class Component extends DCLogic {
 
   // Bios: replace each bio with the founder's own words.
   FOUNDERS = [
-    { name:'Sensei Sand', role:'Creative Director · Photographer', year:'2020', slot:'nmm-founder-sand', src:'people/sand.png', bio:'Bio coming soon.' },
-    { name:'Pikachu', role:'Director · Editor · Photographer', year:'2020', slot:'nmm-founder-pika', src:'people/pikachu.png', bio:'Bio coming soon.' },
-    { name:'Ross Holmes', role:'Editor · VFX · Videographer', year:'2022', slot:'nmm-founder-ross', src:'people/ross.png', bio:'Bio coming soon.' },
+    { name:'Sensei Sand', role:'Creative Director · Photographer', year:'2020', slot:'nmm-founder-sand', src:'people/sand.jpg', bio:'Bio coming soon.' },
+    { name:'Pikachu', role:'Director · Editor · Photographer', year:'2020', slot:'nmm-founder-pika', src:'people/pikachu.jpg', bio:'Bio coming soon.' },
+    { name:'Ross Holmes', role:'Editor · VFX · Videographer', year:'2022', slot:'nmm-founder-ross', src:'people/ross.jpg', bio:'Bio coming soon.' },
   ];
 
   CLIENTS = ['HARTLII','NAOMI KALU','S-I','MARLON HIL','MUSTAQ ALI','AVIREX','FORMAT','+ many more'];
